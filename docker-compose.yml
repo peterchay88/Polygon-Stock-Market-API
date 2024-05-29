@@ -1,0 +1,15 @@
+services:
+  # Defining what image to build the container from
+  fast-api:
+    image: polygon_api:latest
+    ports:
+      - "8000:8000"
+    restart: "unless-stopped"
+    container_name: stock_market_framework
+    volumes:
+      - .:/automation
+    env_file:
+      - secrets.env
+    stdin_open: true
+    tty: true
+    command: /bin/bash

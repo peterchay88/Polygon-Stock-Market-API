@@ -8,3 +8,4 @@ RUN mkdir /automation
 COPY . /automation
 
 # Install requirements
+RUN pip install requirements.txt
