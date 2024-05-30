@@ -7,8 +7,8 @@ echo "-----------------------------------------"
 echo
 echo "Checking to see if polygon_api:latest already exists"
 echo "If it does removing it"
-docker rmi polygon_api:latest
-docker build -t polygon_api:latest .
+#docker rmi polygon_api:latest
+docker build --no-cache -t polygon_api:latest .
 
 # If a container named stock_market_framework exists. Stop it and then remove it.
 echo "-----------------------------------------"
@@ -25,7 +25,7 @@ docker run \
   --name stock_market_framework \
   -p 8000:8000 \
   --restart unless-stopped \
-  -v "$(pwd)":/automation \
+  -v framework:/automation \
   --env-file secrets.env \
   -it polygon_api:latest /bin/bash
 
