@@ -5,7 +5,9 @@ that correlate to the market data from the US Stock exchange provided by
 [polygon](https://polygon.io/docs/stocks/getting-started) 
 
 ### TO-DO
-1. Build Docker structure (WIP)
-   1. Write one test to run against docker env
-2. Create helper classes & utilities (WIP)
-   1. Need to build a request wrapper
+- Build Docker structure (DONE)
+  - Write one test to run against docker env 
+  - Create shell script to streamline this process (done)
+  - Figure out how to automatically delete dangling images when shell script is run
+- Create helper classes & utilities (WIP)
+  - Need to build a request wrapper
