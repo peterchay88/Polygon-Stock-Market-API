@@ -13,13 +13,15 @@ docker build -t polygon_api:latest .
 # If a container named stock_market_framework exists. Stop it and then remove it.
 echo "-----------------------------------------"
 echo "If container stock_market_framework already exists stop it and then delete it"
+echo
+echo "Please Wait..."
 echo "-----------------------------------------"
 echo
 docker stop stock_market_framework
 docker rm stock_market_framework
 
 # Creating Docker container
-docker run -d \
+docker run \
   --name stock_market_framework \
   -p 8000:8000 \
   --restart unless-stopped \
