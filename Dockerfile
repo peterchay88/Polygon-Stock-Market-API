@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y nano
 # Creating a folder named automation
 RUN mkdir /automation
 COPY . /automation
+WORKDIR /automation
 
 # Install requirements
-RUN pip install requirements.txt
+RUN pip3 install -r requirements.txt
