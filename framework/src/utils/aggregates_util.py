@@ -12,4 +12,5 @@ class Aggregates:
         self.request = PolygonRequests()
 
     def get_aggregates(self):
-        pass
+        response = self.request.get(endpoint=self.endpoint)
+        return response

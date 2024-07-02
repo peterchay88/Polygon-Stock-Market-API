@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y nano
 RUN mkdir /automation
 COPY . /automation
 WORKDIR /automation
+RUN mkdir /framework
 
 # Install requirements
 RUN pip3 install -r requirements.txt
