@@ -1,4 +1,5 @@
 import requests
+import logging as logger
 
 
 class PolygonRequests:
@@ -18,5 +19,7 @@ class PolygonRequests:
             f"Unexpected status code. Expected {expected_status_code}. Actual {status_code}."
 
     def get(self, endpoint):
+        logger.debug(f"Running a GET request to the following endpoint:{self.url}{endpoint}")
         response = requests.get(url=f"{self.url}{endpoint}")
+        logger.debug(f'GET Request successful')
         return response

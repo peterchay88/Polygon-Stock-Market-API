@@ -17,4 +17,8 @@ bash start_docker.sh
 ```
 Once you run this command you will be inside the docker container and will be able to run the tests via the pytest
 commands. The container is designed to be mounted with the framework so any changes you make on your local machine in 
-the `framework` folder should reflect in the docker container.
+the `framework` folder should reflect in the docker container. 
+
+For any changes that are made to files outside the 
+`framework` folder you will need to exit the container and re-run the start docker shel script for these changes to
+take effect.
