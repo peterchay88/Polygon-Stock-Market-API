@@ -1,2 +1,4 @@
 /secrets.env
 *.idea
+*.html
+framework/reports

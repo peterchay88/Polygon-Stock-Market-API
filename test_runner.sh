@@ -8,7 +8,7 @@ elif [ "$1" = "all" ]; then
   docker exec -it stock_market_framework pytest
 elif [ $# -eq 1 ]; then
   docker exec  -it stock_market_framework pytest -m $1 \
-  --html /framework/tests/reports/results_$1_$custom_datetime.html \
+  --html ./framework/reports/results_$1_$custom_datetime.html \
   --self-contained-html \
   --color=yes
 fi
