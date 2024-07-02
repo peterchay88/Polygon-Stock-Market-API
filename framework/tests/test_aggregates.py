@@ -13,6 +13,6 @@ class TestAggregates:
         :return:
         """
         aggregates = Aggregates(stocks_ticker="aapl")
-        aggregates.get_aggregates()
+        api_response = aggregates.get_aggregates()
         import pdb; pdb.set_trace()
         pass
