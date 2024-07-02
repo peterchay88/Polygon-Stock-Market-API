@@ -4,10 +4,17 @@ This framework is built using python and docker to test the REST API endpoints
 that correlate to the market data from the US Stock exchange provided by 
 [polygon](https://polygon.io/docs/stocks/getting-started) 
 
-### TO-DO
-- Build Docker structure (DONE)
-  - Write one test to run against docker env 
-  - Create shell script to streamline this process (done)
-  - Figure out how to automatically delete dangling images when shell script is run
-- Create helper classes & utilities (WIP)
-  - Need to build a request wrapper
+### prerequisites:
+Docker \
+Python \
+Account created with polygon
+
+
+This framework was intended to be run inside a docker container. Make sure you have docker running in the background 
+and run the following command to spin up the image and container
+```commandline
+bash start_docker.sh
+```
+Once you run this command you will be inside the docker container and will be able to run the tests via the pytest
+commands. The container is designed to be mounted with the framework so any changes you make on your local machine in 
+the `framework` folder should reflect in the docker container.
