@@ -2,3 +2,4 @@
 *.idea
 *.html
 framework/reports
+framework/tests/logs
