@@ -1,4 +1,4 @@
-from request_util import PolygonRequests
+from framework.src.utils.request_util import PolygonRequests
 
 
 class Aggregates:
