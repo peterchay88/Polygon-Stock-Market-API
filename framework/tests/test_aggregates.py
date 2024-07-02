@@ -7,12 +7,12 @@ pytestmark = [pytest.mark.aggregates]
 class TestAggregates:
 
     @pytest.mark.tcid01
-    def test_get_aggregates_aapl(self):
+    def test_get_aggregates_endpoint(self):
         """
-        This test confirms we can get the aggregates endpoint and return data for AAPL
+        This test confirms we can hit the aggregates endpoint and return a 200. Default ticker is AAPL.
         :return:
         """
-        aggregates = Aggregates(stocks_ticker="aapl")
+        aggregates = Aggregates()
         api_response = aggregates.get_aggregates()
         import pdb; pdb.set_trace()
         pass

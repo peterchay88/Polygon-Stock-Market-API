@@ -1,5 +1,5 @@
 from framework.src.utils.request_util import PolygonRequests
-from dotenv import load_dotenv
+import os
 
 
 class Aggregates:
@@ -11,8 +11,9 @@ class Aggregates:
 
         self.endpoint = f"/v2/aggs/ticker/{stocks_ticker}/range/{multiplier}/{timespan}/{from_date}/{to_date}"
         self.request = PolygonRequests()
-        self.api_key = f"?apiKey={load_dotenv('API_KEY')}"
+        self.api_key = f"apiKey={os.getenv('API_KEY')}"
 
     def get_aggregates(self):
-        response = self.request.get(endpoint=f"{self.endpoint}{self.api_key}")
+        response = self.request.get(endpoint=f"{self.endpoint}?{self.api_key}")
+        self.request.expected_status_code(status_code=response.status_code)
         return response
