@@ -1,5 +1,7 @@
 import requests
-import logging as logger
+from framework.src.utils.logging_util import Logger
+
+logger = Logger()
 
 
 class PolygonRequests:
@@ -15,6 +17,8 @@ class PolygonRequests:
         :param expected_status_code:Expected status code
         :return:
         """
+        logger.debug(f"Checking if status code received {status_code}, matches status code expected "
+                     f"{expected_status_code}.")
         assert status_code == expected_status_code, \
             f"Unexpected status code. Expected {expected_status_code}. Actual {status_code}."
 
