@@ -10,7 +10,7 @@ class PolygonRequests:
         self.url = "https://api.polygon.io"
 
     @staticmethod
-    def expected_status_code(status_code, expected_status_code=200):
+    def expected_status_code(status_code, expected_status_code):
         """
         This method is used to assert if the expected status code was returned from the API response call
         :param status_code:Status code passed in

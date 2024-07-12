@@ -14,12 +14,12 @@ class Aggregates:
         self.endpoint = f"/v2/aggs/ticker/{stocks_ticker}/range/{multiplier}/{timespan}/{from_date}/{to_date}"
         self.request = PolygonRequests()
 
-    def get_aggregates(self, api_key):
+    def get_aggregates(self, api_key, expected_status_code=200):
         """
         Method used to hit aggregates endpoint with GET command
         :return:
         """
         logger.debug(f"Calling get aggregates")
         response = self.request.get(endpoint=f"{self.endpoint}?{api_key}")
-        self.request.expected_status_code(status_code=response.status_code)
+        self.request.expected_status_code(status_code=response.status_code, expected_status_code=expected_status_code)
         return response
