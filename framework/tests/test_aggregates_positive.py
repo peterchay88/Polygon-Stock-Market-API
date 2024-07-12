@@ -3,10 +3,10 @@ from framework.src.utils.aggregates_util import Aggregates
 from framework.src.utils.logging_util import Logger
 
 logger = Logger()
-pytestmark = [pytest.mark.aggregates]
+pytestmark = [pytest.mark.aggregates_positive]
 
 
-class TestAggregates:
+class TestAggregatesPositive:
 
     @pytest.mark.tcid01
     def test_get_aggregates_endpoint(self):
