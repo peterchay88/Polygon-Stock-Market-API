@@ -12,7 +12,7 @@ class TickerDetailsUtility:
 
     def get_ticker_details(self, api_key, ticker="AAPL", expected_status_code=200):
         """
-        Get Request for the Ticker Details API endpoint. If no ticket is specified then default to AAPL
+        Get Request for the Ticker Details API endpoint. If no ticker is specified then default to AAPL
         :param expected_status_code:
         :param api_key:
         :param ticker:
