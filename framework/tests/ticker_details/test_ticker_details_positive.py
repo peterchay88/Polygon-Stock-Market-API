@@ -18,6 +18,6 @@ class TestTickerDetailsPositive:
         """
         logger.info("Running test case 04 get ticker details endpoint positive")
         response = ticker.get_ticker_details(api_key=get_api_key)
-        # No assert is necessary as we check if the status code  matches the expected status code in the
+        # No assert is necessary as we check if the status code matches the expected status code in the
         # Request wrapper
 
