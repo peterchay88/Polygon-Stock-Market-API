@@ -47,3 +47,4 @@ class TestAggregatesNegative:
         expected_msg = "Ticker was incorrectly formatted"
         assert api_response.json()['error'] == expected_msg, \
             f"Error! Unexpected value. Expected: {expected_msg}. Actual: {api_response.json()['error']}"
+

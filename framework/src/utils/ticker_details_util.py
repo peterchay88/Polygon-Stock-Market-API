@@ -4,7 +4,7 @@ from framework.src.utils.request_util import PolygonRequests
 logger = Logger()
 
 
-class TickerDetailsUtility:
+class TickerDetails:
 
     def __init__(self):
         self.endpoint = "/v3/reference/tickers/"

@@ -1,9 +1,9 @@
 import pytest
 from framework.src.utils.logging_util import Logger
-from framework.src.utils.ticker_details_util import TickerDetailsUtility
+from framework.src.utils.ticker_details_util import TickerDetails
 
 
-ticker = TickerDetailsUtility()
+ticker = TickerDetails()
 logger = Logger()
 pytestmark = [pytest.mark.ticker_details_positive]
 
