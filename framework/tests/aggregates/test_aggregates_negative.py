@@ -18,8 +18,9 @@ class TestAggregatesNegative:
         """
         logger.info("Running Test case 2")
         api_response = aggregates.get_aggregates(api_key="apiKey=123", expected_status_code=401)
-        assert api_response.json()['error'] == "Unknown API Key", \
-            f"Error! Unexpected value. Expected: 'Unknown API Key'. Actual: {api_response.json()['error']}"
+        expected_msg = "Unknown API Key"
+        assert api_response.json()['error'] == expected_msg, \
+            f"Error! Unexpected value. Expected: {expected_msg}. Actual: {api_response.json()['error']}"
 
     @pytest.mark.tcid03
     def test_get_aggregates_endpoint_no_api_key(self):
@@ -29,8 +30,9 @@ class TestAggregatesNegative:
         """
         logger.info("Running Test case 3")
         api_response = aggregates.get_aggregates(api_key="", expected_status_code=401)
-        assert api_response.json()['error'] == "API Key was not provided", \
-            f"Error! Unexpected value. Expected: 'API Key was not provided'. Actual: {api_response.json()['error']}"
+        expected_msg = "API Key was not provided"
+        assert api_response.json()['error'] == expected_msg, \
+            f"Error! Unexpected value. Expected: {expected_msg}'. Actual: {api_response.json()['error']}"
 
     @pytest.mark.tcid08
     def test_get_aggregates_endpoint_no_ticker(self, get_api_key):
@@ -41,5 +43,7 @@ class TestAggregatesNegative:
         :return:
         """
         logger.info("Running Test case 8")
-        api_response = aggregates.get_aggregates(api_key=get_api_key, expected_status_code=400,)
-        pass
+        api_response = aggregates.get_aggregates(api_key=get_api_key, expected_status_code=400, stocks_ticker="")
+        expected_msg = "Ticker was incorrectly formatted"
+        assert api_response.json()['error'] == expected_msg, \
+            f"Error! Unexpected value. Expected: {expected_msg}. Actual: {api_response.json()['error']}"
