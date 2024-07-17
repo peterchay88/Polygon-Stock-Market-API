@@ -1,6 +1,8 @@
 from framework.src.utils.logging_util import Logger
 from framework.src.utils.request_util import PolygonRequests
 
+logger = Logger()
+
 
 class TickerDetailsUtility:
 
@@ -16,6 +18,7 @@ class TickerDetailsUtility:
         :param ticker:
         :return:
         """
+        logger.debug(f"Getting ticker details for {ticker}")
         response = self.api_request.get(endpoint=f"{self.endpoint}{ticker}?{api_key}")
         self.api_request.expected_status_code(status_code=response.status_code,
                                               expected_status_code=expected_status_code)
