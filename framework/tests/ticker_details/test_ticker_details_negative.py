@@ -48,8 +48,8 @@ class TestTickerDetailsNegative:
         """
         logger.info("Running test case 7")
         response = ticker.get_ticker_details(api_key=get_api_key, ticker="asdf123!", expected_status_code=404)
-        expected_msg = "ticker not found."
+        expected_msg = "Ticker not found."
         logger.debug(f"Checking to see if received message '{response.json()['message']}' "
                      f"matches the expected message '{expected_msg}'")
         assert response.json()['message'] == expected_msg, \
-            f"ERROR! Unexpected value, Expected: {expected_msg}. Actual: {response.json()['error']}"
+            f"ERROR! Unexpected value, Expected: {expected_msg}. Actual: {response.json()['message']}"
