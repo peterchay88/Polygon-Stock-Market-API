@@ -25,6 +25,14 @@ class Logger:
         """
         self.log.info(string)
 
+    def error(self, string):
+        """
+        wrapper method for error logging msg
+        :param string:
+        :return:
+        """
+        self.log.error(string)
+
 
 class HideSensitiveData(logging.Filter):
     """

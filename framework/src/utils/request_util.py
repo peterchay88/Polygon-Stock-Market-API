@@ -19,6 +19,8 @@ class PolygonRequests:
         """
         logger.debug(f"Checking if status code received {status_code}, matches status code expected "
                      f"{expected_status_code}.")
+        if status_code == 429:
+            logger.error(f"Status code: {status_code} Too many request. Please wait before running more tests.")
         assert status_code == expected_status_code, \
             f"Unexpected status code. Expected {expected_status_code}. Actual {status_code}."
 

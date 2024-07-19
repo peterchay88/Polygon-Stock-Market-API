@@ -35,4 +35,5 @@ class Conditions:
         appended_args = '&'.join(arguments)
         endpoint = f"{self.endpoint}{appended_args}"
         response = self.api_request.get(endpoint=f"{endpoint}&{api_key}")
+        self.api_request.expected_status_code(status_code=response.status_code, expected_status_code=200)
         return response

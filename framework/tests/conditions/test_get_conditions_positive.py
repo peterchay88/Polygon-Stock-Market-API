@@ -5,6 +5,7 @@ from framework.src.helpers.conditions_helper import validate_conditions_response
 
 conditions = Conditions()
 pytestmark = [pytest.mark.conditions_positive]
+logger = Logger()
 
 
 class TestConditionsPositive:
@@ -25,10 +26,12 @@ class TestConditionsPositive:
         """
         This test case confirms if we specify only stocks for the asset class when calling the conditions endpoint
         only data for stocks return
+
         :return:
         """
         params = {"asset_class": "stocks"}
         response = conditions.get_conditions(api_key=get_api_key, **params)
+        logger.debug(response.json())
         assert_response = validate_conditions_response(response.json()["results"], **params)
         assert assert_response is True, \
             f"Error! Response returned an unexpected value"
