@@ -19,9 +19,10 @@ class Conditions:
     #     """
     #     response = self.api_request.get(endpoint=f"{self.endpoint}{asset_class}")
 
-    def get_conditions(self, api_key, **kwargs):
+    def get_conditions(self, api_key, expected_status_code=200, **kwargs):
         """
         Get response for the conditions endpoint.
+        :param expected_status_code:
         :param api_key:
         :return:
         """
@@ -35,5 +36,6 @@ class Conditions:
         appended_args = '&'.join(arguments)
         endpoint = f"{self.endpoint}{appended_args}"
         response = self.api_request.get(endpoint=f"{endpoint}&{api_key}")
-        self.api_request.expected_status_code(status_code=response.status_code, expected_status_code=200)
+        self.api_request.expected_status_code(status_code=response.status_code,
+                                              expected_status_code=expected_status_code)
         return response
