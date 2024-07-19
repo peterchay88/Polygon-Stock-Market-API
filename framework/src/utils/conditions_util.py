@@ -1,6 +1,8 @@
 from framework.src.utils.request_util import PolygonRequests
 from framework.src.utils.logging_util import Logger
 
+logger = Logger()
+
 
 class Conditions:
 
@@ -27,13 +29,10 @@ class Conditions:
         parameters = ["asset_class", "data_type", "id", "sip", "order", "limit", "sort"]
         index = 0
         for parameter in parameters:
-            if kwargs.get(parameter[index]):
-                arguments.append(f"{parameters[index]}={kwargs[parameter[index]]}")
-                index =+ 1
-        endpoint = f"{self.endpoint}'&'.join(arguments)"
+            if kwargs.get(parameters[index]):
+                arguments.append(f"{parameters[index]}={kwargs[parameters[index]]}")
+                index += 1
+        appended_args = '&'.join(arguments)
+        endpoint = f"{self.endpoint}{appended_args}"
         response = self.api_request.get(endpoint=f"{endpoint}&{api_key}")
         return response
-
-
-
-
