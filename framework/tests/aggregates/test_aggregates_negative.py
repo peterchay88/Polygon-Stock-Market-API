@@ -16,7 +16,7 @@ class TestAggregatesNegative:
     def test_get_aggregates_endpoint_invalid_api_key(self, api_key, test_id, error_msg):
         """
         This test case confirms we return the correct error when trying to hit the aggregates endpoint with an invalid
-        API key
+        API key and no API key
         :return:
         """
         logger.info(f"Running Test case {test_id}")
