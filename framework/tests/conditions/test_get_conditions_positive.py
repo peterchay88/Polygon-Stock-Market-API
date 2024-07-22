@@ -4,7 +4,7 @@ from framework.src.utils.conditions_util import Conditions
 from framework.src.helpers.conditions_helper import validate_conditions_response
 
 conditions = Conditions()
-pytestmark = [pytest.mark.conditions, pytest.mark.conditions_positive]
+pytestmark = [pytest.mark.conditions, pytest.mark.conditions_positive, pytest.mark.positive]
 logger = Logger()
 
 

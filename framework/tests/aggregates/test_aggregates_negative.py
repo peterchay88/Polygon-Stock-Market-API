@@ -4,7 +4,7 @@ from framework.src.utils.logging_util import Logger
 
 logger = Logger()
 aggregates = Aggregates()
-pytestmark = [pytest.mark.aggregates_negative, pytest.mark.aggregates]
+pytestmark = [pytest.mark.aggregates_negative, pytest.mark.aggregates, pytest.mark.negative]
 
 
 class TestAggregatesNegative:

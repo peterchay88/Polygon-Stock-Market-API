@@ -4,7 +4,7 @@ from framework.src.utils.logging_util import Logger
 
 logger = Logger()
 conditions = Conditions()
-pytestmark = [pytest.mark.conditions, pytest.mark.conditions_negative]
+pytestmark = [pytest.mark.conditions, pytest.mark.conditions_negative, pytest.mark.negative]
 
 
 class TestConditionsNegative:

@@ -5,7 +5,7 @@ from framework.src.utils.ticker_details_util import TickerDetails
 
 ticker = TickerDetails()
 logger = Logger()
-pytestmark = [pytest.mark.ticker_details_positive]
+pytestmark = [pytest.mark.ticker_details_positive, pytest.mark.ticker_details, pytest.mark.positive]
 
 
 class TestTickerDetailsPositive:
