@@ -1,5 +1,7 @@
 from framework.src.utils.logging_util import Logger
 
+logger = Logger()
+
 
 def validate_conditions_response(conditions_response, **kwargs):
     """
@@ -8,6 +10,7 @@ def validate_conditions_response(conditions_response, **kwargs):
     :return:
     """
     for key in kwargs:
+        logger.debug(f"Checking if returned response only contain {key}: {kwargs[key]}")
         for response_key in conditions_response:
             if response_key[key] == kwargs[key]:
                 assert_value = True
@@ -15,7 +18,3 @@ def validate_conditions_response(conditions_response, **kwargs):
                 assert_value = False
                 break
     return assert_value
-
-
-
-# validate_conditions_response(asset_class="stocks", data_type="test")
