@@ -9,30 +9,20 @@ pytestmark = [pytest.mark.aggregates_negative, pytest.mark.aggregates]
 
 class TestAggregatesNegative:
 
-    @pytest.mark.tcid02
-    def test_get_aggregates_endpoint_invalid_api_key(self):
+    @pytest.mark.parametrize("api_key, test_id, error_msg", [
+        pytest.param("apiKey=123", "2", "Unknown API Key", marks=pytest.mark.tcid02),
+        pytest.param("", "3", "API Key was not provided", marks=pytest.mark.tcid03)
+    ])
+    def test_get_aggregates_endpoint_invalid_api_key(self, api_key, test_id, error_msg):
         """
         This test case confirms we return the correct error when trying to hit the aggregates endpoint with an invalid
         API key
         :return:
         """
-        logger.info("Running Test case 2")
-        api_response = aggregates.get_aggregates(api_key="apiKey=123", expected_status_code=401)
-        expected_msg = "Unknown API Key"
-        assert api_response.json()['error'] == expected_msg, \
-            f"Error! Unexpected value. Expected: {expected_msg}. Actual: {api_response.json()['error']}"
-
-    @pytest.mark.tcid03
-    def test_get_aggregates_endpoint_no_api_key(self):
-        """
-        This test case confirms we return the correct error when trying to hit the aggregates endpoint with no API key
-        :return:
-        """
-        logger.info("Running Test case 3")
-        api_response = aggregates.get_aggregates(api_key="", expected_status_code=401)
-        expected_msg = "API Key was not provided"
-        assert api_response.json()['error'] == expected_msg, \
-            f"Error! Unexpected value. Expected: {expected_msg}'. Actual: {api_response.json()['error']}"
+        logger.info(f"Running Test case {test_id}")
+        api_response = aggregates.get_aggregates(api_key=api_key, expected_status_code=401)
+        assert api_response.json()['error'] == error_msg, \
+            f"Error! Unexpected value. Expected: {error_msg}. Actual: {api_response.json()['error']}"
 
     @pytest.mark.tcid08
     def test_get_aggregates_endpoint_no_ticker(self, get_api_key):
