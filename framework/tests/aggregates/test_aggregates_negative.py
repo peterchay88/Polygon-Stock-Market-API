@@ -63,3 +63,24 @@ class TestAggregatesNegative:
         assert api_response.json()['resultsCount'] == 0, \
             f"Error! Unexpected value. Expected value for resultsCount: 0. Actual {api_response.json()['resultsCount']}"
 
+    @pytest.mark.parametrize("multiplier_param, test_id", [
+        pytest.param(0, "19", marks=pytest.mark.tcid19),
+        pytest.param(-1, "20", marks=pytest.mark.tcid20),
+        pytest.param(-100, "21", marks=pytest.mark.tcid21)
+    ])
+    def test_get_aggregates_endpoint_not_positive_multiplier(self, get_api_key, multiplier_param, test_id):
+        """
+        This test confirms that we get an error code and the correct error when sending a multiplier that is not
+        positive to the aggregates endpoint via GET call
+        :param get_api_key:
+        :param multiplier_param:
+        :param test_id:
+        :return:
+        """
+        logger.info(f"Running Test Case {test_id}")
+        response = aggregates.get_aggregates(api_key=get_api_key, multiplier=multiplier_param, expected_status_code=400)
+        expected_msg = "The parameter 'multiplier' must be a positive number"
+        assert response.json()['error'] == expected_msg, \
+            f"Error! Unexpected value. Expected: {expected_msg}. Actual {response.json()['error']}"
+
+
