@@ -1,13 +1,14 @@
 import os
 import logging
+from urllib3.connectionpool import log as connectionpool_log # Trying to figure out how to hide API key from connectionpool.py
 
-log = logging.getLogger()
+logger = logging.getLogger()
 
 
 class Logger:
 
     def __init__(self):
-        self.log = log
+        self.log = logger
 
     def debug(self, string):
         """
@@ -43,4 +44,5 @@ class HideSensitiveData(logging.Filter):
         return True
 
 
-log.addFilter(HideSensitiveData())
+logger.addFilter(HideSensitiveData())
+connectionpool_log.addFilter(HideSensitiveData()) # Trying to figure out how to hide API key from connectionpool.py
