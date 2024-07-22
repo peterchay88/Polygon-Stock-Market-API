@@ -28,5 +28,6 @@ class Aggregates:
         logger.debug(f"Calling get aggregates")
         response = self.request.get(endpoint=f"{self.endpoint}{stocks_ticker}/range/{multiplier}/{timespan}"
                                              f"/{from_date}/{to_date}?{api_key}")
+        logger.debug(response.json())
         self.request.expected_status_code(status_code=response.status_code, expected_status_code=expected_status_code)
         return response

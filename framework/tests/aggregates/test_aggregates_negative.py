@@ -4,7 +4,7 @@ from framework.src.utils.logging_util import Logger
 
 logger = Logger()
 aggregates = Aggregates()
-pytestmark = [pytest.mark.aggregates_negative]
+pytestmark = [pytest.mark.aggregates_negative, pytest.mark.aggregates]
 
 
 class TestAggregatesNegative:
@@ -47,4 +47,19 @@ class TestAggregatesNegative:
         expected_msg = "Ticker was incorrectly formatted"
         assert api_response.json()['error'] == expected_msg, \
             f"Error! Unexpected value. Expected: {expected_msg}. Actual: {api_response.json()['error']}"
+
+    @pytest.mark.tcid18
+    def test_get_aggregates_endpoint_invalid_ticker(self, get_api_key):
+        """
+        This test confirms that when we send an invalid ticker to the aggregates endpoint we return an empty query
+        :param get_api_key:
+        :return:
+        """
+        logger.info("Running test case 18")
+        api_response = aggregates.get_aggregates(api_key=get_api_key, expected_status_code=200,
+                                                 stocks_ticker="Invalid_ticker")
+        assert api_response.json()['queryCount'] == 0, \
+            f"Error! Unexpected value. Expected value for queryCount: 0. Actual {api_response.json()['queryCount']}"
+        assert api_response.json()['resultsCount'] == 0, \
+            f"Error! Unexpected value. Expected value for resultsCount: 0. Actual {api_response.json()['resultsCount']}"
 
