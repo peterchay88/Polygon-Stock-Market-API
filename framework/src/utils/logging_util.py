@@ -1,6 +1,5 @@
 import os
 import logging
-from urllib3.connectionpool import log as connectionpool_log # Trying to figure out how to hide API key from connectionpool.py
 
 logger = logging.getLogger()
 
@@ -45,4 +44,4 @@ class HideSensitiveData(logging.Filter):
 
 
 logger.addFilter(HideSensitiveData())
-connectionpool_log.addFilter(HideSensitiveData()) # Trying to figure out how to hide API key from connectionpool.py
+
