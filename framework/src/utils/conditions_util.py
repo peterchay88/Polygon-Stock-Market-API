@@ -30,8 +30,6 @@ class Conditions:
         parameters = ["asset_class", "data_type", "id", "sip", "order", "limit", "sort"]
         index = 0
         for parameter in parameters:
-            # import pdb;
-            # pdb.set_trace()
             if kwargs.get(parameters[index]):
                 arguments.append(f"{parameters[index]}={kwargs[parameters[index]]}")
             index += 1
