@@ -1,7 +1,7 @@
 import pytest
 from framework.src.utils.logging_util import Logger
 from framework.src.utils.conditions_util import Conditions
-from framework.src.helpers.conditions_helper import validate_conditions_response
+from framework.src.helpers.conditions_helper import validate_conditions_response, validate_data_type
 
 conditions = Conditions()
 pytestmark = [pytest.mark.conditions, pytest.mark.conditions_positive, pytest.mark.positive]
@@ -58,6 +58,6 @@ class TestConditionsPositive:
         params = {"data_type": data_type_param}
         response = conditions.get_conditions(api_key=get_api_key, **params)
         logger.debug(response.json())
-        assert_response = validate_conditions_response(response.json()["results"], **params)
+        assert_response = validate_data_type(response.json()["results"], **params)
         assert assert_response is True, \
             f"Error! Response returned an unexpected value"

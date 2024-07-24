@@ -30,9 +30,11 @@ class Conditions:
         parameters = ["asset_class", "data_type", "id", "sip", "order", "limit", "sort"]
         index = 0
         for parameter in parameters:
+            # import pdb;
+            # pdb.set_trace()
             if kwargs.get(parameters[index]):
                 arguments.append(f"{parameters[index]}={kwargs[parameters[index]]}")
-                index += 1
+            index += 1
         appended_args = '&'.join(arguments)
         endpoint = f"{self.endpoint}{appended_args}"
         response = self.api_request.get(endpoint=f"{endpoint}&{api_key}")
