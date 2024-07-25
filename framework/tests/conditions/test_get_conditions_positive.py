@@ -1,7 +1,7 @@
 import pytest
 from framework.src.utils.logging_util import Logger
 from framework.src.utils.conditions_util import Conditions
-from framework.src.helpers.response_data_validator import validate_conditions_response, validate_response_data
+from framework.src.helpers.response_data_validator import validate_response_data
 
 conditions = Conditions()
 pytestmark = [pytest.mark.conditions, pytest.mark.conditions_positive, pytest.mark.positive]
