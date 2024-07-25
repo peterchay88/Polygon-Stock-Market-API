@@ -31,10 +31,10 @@ def validate_conditions_response(conditions_response, **kwargs):
     return assert_value
 
 
-def validate_data_type(conditions_response, **kwargs):
+def validate_response_data(conditions_response, **kwargs):
     """
-    This function is used to validate 'data_type' in the response. Data types can be returned as lists with multiple
-    parameters returned
+    This function is used to
+
     :param conditions_response:
     :param kwargs:
     :return:
@@ -48,7 +48,17 @@ def validate_data_type(conditions_response, **kwargs):
                     logger.debug(f"Checking to see if returned response: {response[response_keys]} contains "
                                  f"{kwargs[kwarg_key]}")
                     assert_value = False
-                    for key in response[response_keys]:
-                        if key == kwargs[kwarg_key]:
+                    if type(response[response_keys]) is list:
+                        for key in response[response_keys]:
+                            if key == kwargs[kwarg_key]:
+                                assert_value = True
+                    elif type(response[response_keys]) is dict:
+                        # Add logic for iterating through a dictionary here
+                        pass
+                    else:
+                        if response[response_keys] == kwargs[kwarg_key]:
                             assert_value = True
+                        else:
+                            assert_value = False
+                            break
     return assert_value
