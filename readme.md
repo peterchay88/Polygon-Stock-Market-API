@@ -9,6 +9,8 @@ Docker \
 Python \
 Account created with polygon
 
+Copy the `example.env` file and re-name it to `secrets.env`. Populate the API KEY and API_ID from Polygon in the
+secrets file. You will need to create an account with Polygon for the api key and id.
 
 This framework was intended to be run inside a docker container. Make sure you have docker running in the background 
 and run the following command to spin up the image and container
