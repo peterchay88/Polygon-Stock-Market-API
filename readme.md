@@ -20,7 +20,7 @@ commands. The container is designed to be mounted with the framework so any chan
 the `framework` folder should reflect in the docker container. 
 
 For any changes that are made to files outside the 
-`framework` folder you will need to exit the container and re-run the start docker shel script for these changes to
+`framework` folder you will need to exit the container and re-run the start docker shell script for these changes to
 take effect.
 
 ## How to run tests
